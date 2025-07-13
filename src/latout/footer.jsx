@@ -2,7 +2,7 @@ import { FaInstagram, FaFacebookF, FaTripadvisor } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0c0b18] text-white py-12 ">
+    <footer className="sticky bg-[#0c0b18] text-white py-12 ">
 
       <div className="max-w-7xl mx-auto px-16 grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 justify-between gap-8  md:text-left">
         {/* About Section */}

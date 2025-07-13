@@ -1,6 +1,8 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import RootLayout from "../latout/root-layout";
 import HomeScreen from "../pages/home";
+import Contact from "../pages/contact";
+import Shop from "../pages/shop";
 
 
 
@@ -39,10 +41,13 @@ const router = createBrowserRouter([
 
           {
             path:'contact',
-            element:(
-                <div><h1>contact</h1></div>
-            )
+            Component:Contact,
           },
+
+          {
+            path:'shop',
+            Component:Shop,
+          }
 
         ],
       },
