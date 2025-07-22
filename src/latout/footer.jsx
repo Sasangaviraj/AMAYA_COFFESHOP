@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="sticky bg-[#0c0b18] text-white py-12 ">
 
-      <div className="max-w-7xl mx-auto px-16 grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 justify-between gap-8  md:text-left">
+      <div className=" flex   justify-between gap-8  ">
         {/* About Section */}
         <div>
           <h3 className="text-footer-p1 text-center font-semibold tracking-widest mb-4">ABOUT</h3>

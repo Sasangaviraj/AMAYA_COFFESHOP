@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import OrangeButton from "../components/orangebutton";
 import WhiteButton from "../components/white-button";
 import ProductTea from "../components/productcoffe";
 
 const HomeScreen = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div>
       {/* hero section */}
@@ -73,7 +77,7 @@ const HomeScreen = () => {
                     This box contains all three of our <br /> delicious,
                     ethically sourced coffee <br /> blends.
                   </h1>
-                  <WhiteButton title=" OPEN THE BOX" />
+                  <WhiteButton title=" OPEN THE BOX" onClick={()=>{navigate("/shop")}} />
                 </div>
               </div>
 
@@ -98,7 +102,13 @@ const HomeScreen = () => {
               </div>
             </div>
           </div>
-          <OrangeButton title="SHOP ALL COFFEE" />
+          <OrangeButton
+            onClick={() => {
+              navigate("/shop");
+               console.log("navigate:", navigate)
+              }}
+            title="SHOP ALL COFFEE "
+          />
         </div>
       </section>
 
@@ -132,7 +142,7 @@ const HomeScreen = () => {
               your door.
             </p>
             <div className="mt-4">
-              <OrangeButton title="LEARN MORE" className="bg-gray-400" />
+              <OrangeButton title="LEARN MORE" className="bg-gray-400" onClick={()=>{navigate("/shop")}} />
             </div>
           </div>
           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 transform rotate-270 origin-right right-0 mr-4 md:mr-8 lg:mr-5 items-center">
@@ -195,11 +205,12 @@ const HomeScreen = () => {
             <hr className="w-10 text-h1 border-1  mx-auto lg:mx-0 mt-2 " />
             <p className=" leading-7 text-gray-700  lg:text-left text-center text-expiani-h mt-5 ">
               Try a bright spectrum of aromas, essences and acidities{" "}
-              <br className="hidden lg:block" />
-              cultivated into existence by the committed expertise of our{" "}
-              <br className="hidden lg:block" /> producing partners around the
+              cultivated into existence by the 
+              <br className="hidden lg:block" /> committed expertise of our{" "}
+              producing partners around the
               world. you.
             </p>
+          <OrangeButton title="ORDER NOW" onClick={()=>{navigate("/shop")}}/>
           </div>
         </div>
       </section>
@@ -208,8 +219,6 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
-
-
 
 // image detail components
 const ImageDetail = ({ imgurl, topic, maintopic, name }) => {

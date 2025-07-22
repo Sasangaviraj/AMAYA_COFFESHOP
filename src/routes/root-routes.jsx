@@ -1,4 +1,4 @@
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import RootLayout from "../latout/root-layout";
 import HomeScreen from "../pages/home";
 import Contact from "../pages/contact";
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
 
           {
             path:'shop',
-            Component:Shop,
+            element:<Shop/>
           }
 
         ],
