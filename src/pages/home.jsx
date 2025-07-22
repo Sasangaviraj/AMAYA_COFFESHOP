@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 import OrangeButton from "../components/orangebutton";
 import WhiteButton from "../components/white-button";
 import ProductTea from "../components/productcoffe";
-
+import { motion } from "motion/react";
 const HomeScreen = () => {
-
   const navigate = useNavigate();
 
   return (
@@ -25,22 +24,26 @@ const HomeScreen = () => {
           </div>
 
           <div className="flex flex-col gap-4 justify-end  ">
-            <p className="text-orange-400 text-sm lg:text-left text-center font-semibold tracking-widest">
+            <motion.p initial={{y:-100,}} animate={{y:0}} transition={{delay: 0.6,duration:0.5,}}
+              className="text-orange-400 text-sm lg:text-left text-center font-semibold tracking-widest"
+            >
               EXCEPTIONAL EQULATY
-            </p>
+            </motion.p>
 
-            <p className=" text-[36px]  lg:text-[52px] text-black text-center lg:text-left font-semibold font-playfair  tracking-normal leading-10  lg:leading-15 sm:justify-end">
+            <motion.p initial={{x:-30}} animate={{x:0 }} transition={{delay:0.6,duration:0.5}}
+             className=" text-[36px]  lg:text-[52px] text-black text-center lg:text-left font-semibold font-playfair  tracking-wide leading-10  lg:leading-15 sm:justify-end">
               It all began with amodest <br className="hidden lg:block" />{" "}
               concept: <br className="lg:hidden block" />
               Create <i>amazing</i> <br /> coffee
-            </p>
-            <hr className="w-10 text-orange-400 border-1  mx-auto lg:mx-0 mt-2 " />
-            <p className=" leading-7 text-gray-700  lg:text-left text-center text-expiani-h mt-5 sm:p-4 ">
+            </motion.p>
+
+            <motion.hr initial={{x:-40}} animate={{x:0}}  transition={{delay:0.6, duration:0.5}} className="w-10 text-orange-400 border-1  mx-auto lg:mx-0 mt-2 " />
+            <motion.p initial={{x:-40}} animate={{x:0}}  transition={{delay:0.6,duration:0.5}} className=" leading-7 text-gray-700  lg:text-left text-center text-expiani-h mt-5  ">
               Our mission is to provide sustainably sourced, hand-picked quality
               coffee. Great coffee is our passion{" "}
               <br className="hidden lg:block" /> and we want to share it with
               you.
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
@@ -66,18 +69,23 @@ const HomeScreen = () => {
                 />
 
                 <div className="relative flex flex-col px-25 z-10 gap-7 sm:justify-end ">
-                  <p className="text-white text-mainheading font-semibold font-playfair lg:items-start lg:text-left text-center leading-[1.2]">
+                  <motion.p initial={{x:-30}} whileInView={{x:0}} transition={{delay:0.5, duration:0.5,}} className="text-white text-mainheading font-semibold font-playfair lg:items-start lg:text-left text-center leading-[1.2]">
                     Trio Blend
                     <span className="hidden sm:inline">
                       <br />
                     </span>
                     Box
-                  </p>
-                  <h1 className="text-white font-medium">
+                  </motion.p>
+                  <motion.h1 initial={{x:-30}} whileInView={{x:0}} transition={{delay:0.5, duration:0.5,}}  className="text-white font-medium">
                     This box contains all three of our <br /> delicious,
                     ethically sourced coffee <br /> blends.
-                  </h1>
-                  <WhiteButton title=" OPEN THE BOX" onClick={()=>{navigate("/shop")}} />
+                  </motion.h1>
+                  <WhiteButton
+                    title=" OPEN THE BOX"
+                    onClick={() => {
+                      navigate("/shop");
+                    }}
+                  />
                 </div>
               </div>
 
@@ -105,8 +113,8 @@ const HomeScreen = () => {
           <OrangeButton
             onClick={() => {
               navigate("/shop");
-               console.log("navigate:", navigate)
-              }}
+              console.log("navigate:", navigate);
+            }}
             title="SHOP ALL COFFEE "
           />
         </div>
@@ -128,21 +136,27 @@ const HomeScreen = () => {
           <div className="hidden lg:block lg:w-1/2 gap-4 "></div>
 
           <div className="flex flex-col items-center lg:items-end text-center lg:text-right gap-8 lg:w-1/2 lg:px-5">
-            <p className="text-h1 text-xs md:text-sm uppercase tracking-widest font-medium">
+            <motion.p initial={{y:-50}} whileInView={{y:0}} transition={{delay:0.5, duration:0.5,}}  className="text-h1 text-xs md:text-sm uppercase tracking-widest font-medium">
               MORE THAN JUST COLD COFFEE
-            </p>
-            <h1 className="font-playfair text-main-heading text-[40px] md:text-[60px] lg:text-mainheading leading-tight md:leading-none font-semibold">
+            </motion.p>
+            <motion.h1 initial={{x:30}} whileInView={{x:0}} transition={{delay:0.5, duration:0.5,}}  className="font-playfair text-main-heading text-[40px] md:text-[60px] lg:text-mainheading leading-tight md:leading-none font-semibold">
               Natural <i>Cold Brew</i> Coffee
-            </h1>
-            <hr className="w-12 md:w-16 border-2 text-h1 mx-auto lg:mx-0 lg:mr-0" />
+            </motion.h1>
+            <motion.hr initial={{x:30}} whileInView={{x:0}} transition={{delay:0.5, duration:0.5,}} className="w-12 md:w-16 border-2 text-h1 mx-auto lg:mx-0 lg:mr-0" />
 
-            <p className="text-expiani  text-h1T md:text-base leading-relaxed ">
+            <motion.p initial={{x:30}} whileInView={{x:0}} transition={{delay:0.5, duration:0.5,}} className="text-expiani  text-h1T md:text-base leading-relaxed ">
               Refresh your mind with organic, sustainably-sourced cold brew
               coffee, delivered straight to <br className="hidden lg:block" />{" "}
               your door.
-            </p>
+            </motion.p>
             <div className="mt-4">
-              <OrangeButton title="LEARN MORE" className="bg-gray-400" onClick={()=>{navigate("/shop")}} />
+              <OrangeButton
+                title="LEARN MORE"
+                className="bg-gray-400"
+                onClick={() => {
+                  navigate("/shop");
+                }}
+              />
             </div>
           </div>
           <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 transform rotate-270 origin-right right-0 mr-4 md:mr-8 lg:mr-5 items-center">
@@ -168,6 +182,9 @@ const HomeScreen = () => {
           topic="become a partner"
           maintopic="Explore Wholesale"
           name="SEND INQUIRY"
+          onClick={() => {
+            navigate("/whoolesale");
+          }}
         />
 
         <ImageDetail
@@ -194,23 +211,27 @@ const HomeScreen = () => {
           </div>
 
           <div className="flex flex-col gap-4 justify-end  ">
-            <p className="text-h1 text-sm lg:text-left text-center font-semibold tracking-widest">
+            <motion.p  initial={{y:-100,}} whileInView={{ y: 0, opacity: 1 }} transition={{delay: 0.6,duration:0.5,}} className="text-h1 text-sm lg:text-left text-center font-semibold tracking-widest">
               Free shipping on orders of{" "}
               <span className="font-Raleway">$35+</span>
-            </p>
+            </motion.p>
 
-            <p className=" text-[36px]  lg:text-[52px] text-black text-center lg:text-left font-semibold font-playfair  tracking-normal  leading-15">
+            <motion.p initial={{x:-30}} whileInView={{ x: 0, opacity: 1 }} transition={{delay:0.6,duration:0.5}} className=" text-[36px]  lg:text-[52px] text-black text-center lg:text-left font-semibold font-playfair  tracking-normal  leading-15">
               Quality coffee <br /> <i>delivered to your</i> <br /> door
-            </p>
-            <hr className="w-10 text-h1 border-1  mx-auto lg:mx-0 mt-2 " />
-            <p className=" leading-7 text-gray-700  lg:text-left text-center text-expiani-h mt-5 ">
-              Try a bright spectrum of aromas, essences and acidities{" "}
-              cultivated into existence by the 
+            </motion.p>
+            <motion.hr initial={{x:-30}} whileInView={{ x: 0, opacity: 1 }} transition={{delay:0.6,duration:0.5}} className="w-10 text-h1 border-1  mx-auto lg:mx-0 mt-2 " />
+            <motion.p initial={{x:-30}} whileInView={{ x: 0, opacity: 1 }} transition={{delay:0.6,duration:0.5}} className=" leading-7 text-gray-700  lg:text-left text-center text-expiani-h mt-5 ">
+              Try a bright spectrum of aromas, essences and acidities cultivated
+              into existence by the
               <br className="hidden lg:block" /> committed expertise of our{" "}
-              producing partners around the
-              world. you.
-            </p>
-          <OrangeButton title="ORDER NOW" onClick={()=>{navigate("/shop")}}/>
+              producing partners around the world. you.
+            </motion.p>
+            <OrangeButton 
+              title="ORDER NOW"
+              onClick={() => {
+                navigate("/shop");
+              }}
+            />
           </div>
         </div>
       </section>
@@ -224,16 +245,20 @@ export default HomeScreen;
 const ImageDetail = ({ imgurl, topic, maintopic, name }) => {
   return (
     <div className="relative w-[330px] md:w-[380px] lg:w-[440px] h-[650px] overflow-hidden ">
-      <img
+      <motion.img
+      initial={{y:-55}}
+      whileInView={{y:0}}
+      transition={{delay:0.5,duration:0.5}}
         src={imgurl}
         alt={maintopic || topic}
         className="absolute inset-0 w-full h-full object-cover"
       />
 
       <div className="px-6 py-6 absolute inset-0 flex flex-col items-start justify-end gap-3 bg-gradient-to-t from-black/70 to-transparent">
-        <p className="text-white text-base uppercase tracking-widest">
+        <motion.p 
+        initial={{y:-30}} whileInView={{y:0}} transition={{delay:0.5, duration:0.5,}} className="text-white text-base uppercase tracking-widest">
           {topic}
-        </p>
+        </motion.p>
 
         <h1 className="text-white text-3xl font-bold leading-tight font-playfair mb-4">
           {maintopic}

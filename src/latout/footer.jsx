@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="sticky bg-[#0c0b18] text-white py-12 ">
 
-      <div className=" flex   justify-between gap-8  ">
+      <div className=" w-full grid grid-cols-1 gap-5 md:pz-20 md:grid-cols-3   ">
         {/* About Section */}
         <div>
           <h3 className="text-footer-p1 text-center font-semibold tracking-widest mb-4">ABOUT</h3>
@@ -38,17 +38,21 @@ const Footer = () => {
 
       </div>
       {/* Bottom Row */}
-      <div className="mt-10 border-t border-gray-400 lg:border-hidden  pt-6 px-20 flex flex-col md:flex-row justify-between items-center text-footer-p2 text-gray-400">
-        <p className="mb-4 md:mb-0 text-center lg:block">© 2020 AMAYA. ALL RIGHTS RESERVED.</p>
+      <div className="mt-10 border-t border-gray-400 lg:border-hidden  pt-6 px-20 grid grid-cols-1  md:grid-cols-3 gap-5 text-footer-p2 text-gray-400">
+        <p className="mb-4 md:mb-0 text-left lg:block">© 2020 AMAYA. ALL RIGHTS RESERVED.</p>
 
         {/* Centered Logo */}
-        <img
-          src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2021/02/Amaya-logo-white-1.png"
-          alt="Amaya Logo"
-          className="h-10 mb-4 md:mb-0 cursor-pointer"
-        />
 
-        <p className="text-white tracking-widest">BECAUSE WE LOVE COFFEE</p>
+        <div className="w-full flex justify-center ">
+          <img
+            src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2021/02/Amaya-logo-white-1.png"
+            alt="Amaya Logo"
+            className="h-10 mb-4 md:mb-0 cursor-pointer"
+            onClick={()=>{navigate('/')}}
+          />
+        </div>
+
+        <p className="text-white text-right tracking-widest">BECAUSE WE LOVE COFFEE</p>
       </div>
 
     </footer>

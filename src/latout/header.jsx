@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileMenu from "../components/mobilemenu";
 import {
   MdOutlineKeyboardArrowDown,
@@ -6,10 +6,22 @@ import {
   MdSearch,
   MdClose,
 } from "react-icons/md";
-import { FaFacebookF, FaInstagram, FaSearch, FaTripadvisor } from "react-icons/fa";
+
+import { useLocation, useNavigate } from "react-router";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaSearch,
+  FaTripadvisor,
+} from "react-icons/fa";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location.pathname);
 
   const homeDropdownItems = [
     "HOME 2",
@@ -49,103 +61,89 @@ const Header = () => {
     shop: shopDropDownItems,
   };
 
+  useEffect(() => {
+    const ScrollHandle = () => {
+      console.log(window.scrollY);
+    };
+    window.addEventListener("scroll", ScrollHandle);
+    return () => {
+      window.addEventListener("scroll", ScrollHandle);
+    };
+  }, []);
+
   return (
-    <div className="sticky">
-      {/* Top Bar */}
-      <div className="relative bg-button-blue flex justify-end items-center p-4">
-       
-          <p className="absolute left-1/2 text-white uppercase font-semibold text-link-p3 transform -translate-x-1/2 ">
-            free shipping on orders of
-            <span className="font-Raleway">$35+</span>
-          </p>
-     
-        {/* Social Section */}
-        <div className="flex gap-7" >
-          <div className="flex  md:justify-start gap-3  items-center ">
-            <a href="#">
-              <FaInstagram className="hover:text-h1 w-4 h-4 text-white" />
-            </a>
-            <a href="#">
-              <FaFacebookF className="hover:text-h1 w-4 h-4 text-white" />
-            </a>
-            <a href="#">
-              <FaTripadvisor className="hover:text-h1 w-4 h-4 text-white" />
-            </a>
-           
+    <header
+      className={` fixed top-0 left-0 z-[100] flex items-center justify-between w-full py-6 px-4 sm:px-6 md:px-8 lg:px-12 ${
+        location.pathname == "/whoolesale" ? "bg-transparent" : "bg-white"
+      } shadow-md`}
+    >
+      {/* mobile leftside */}
+      {!isMobileMenuOpen && (
+        <div className="lg:hidden flex items-center gap-4">
+          <div
+            className="cursor-pointer"
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <MdMenu size={24} className="text-gray-800" />
           </div>
-           <a href="#">
-              <FaSearch  className="hover:text-h1 w-4 h-4 text-white " />
-            </a>
         </div>
+      )}
+      {isMobileMenuOpen && (
+        <MobileMenu
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+          navItems={allNavItems}
+        />
+      )}
+
+      {/* Desktop Left Side Navigation */}
+      <div className="hidden  lg:flex items-center gap-10">
+        <HeaderUi title="HOME" icon={<MdOutlineKeyboardArrowDown  />} onClick={()=>{navigate('/')}}>
+          <HeaderUiList items={homeDropdownItems} />
+        </HeaderUi>
+
+        <HeaderUi title="PAGES" icon={<MdOutlineKeyboardArrowDown />} >
+          <HeaderUiList items={AboutDropDownItems}  />
+        </HeaderUi>
+
+        <HeaderUi title="ARTICLES" icon={<MdOutlineKeyboardArrowDown />}>
+          <HeaderUiList items={ArticleDropDownItems} />
+        </HeaderUi>
       </div>
 
-      <header className=" top-0 left-0 z-[100] flex items-center justify-between w-full py-6 px-4 sm:px-6 md:px-8 lg:px-12 bg-white shadow-md">
-        {/* mobile leftside */}
-        {!isMobileMenuOpen && (
-          <div className="lg:hidden flex items-center gap-4">
-            <div
-              className="cursor-pointer"
-              onClick={() => setIsMobileMenuOpen(true)}
-            >
-              <MdMenu size={24} className="text-gray-800" />
-            </div>
-          </div>
-        )}
-        {isMobileMenuOpen && (
-          <MobileMenu
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
-            navItems={allNavItems}
-          />
-        )}
+      {/* Desktop Center */}
+      <div className="">
+        <img
+          src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2021/01/Amaya-logo.png"
+          className="lg:h-14 h-11 md:12 object-contain cursor-pointer"
+          alt="Logo"
+          onClick={()=>{navigate('/')}}
+        />
+      </div>
 
-        {/* Desktop Left Side Navigation */}
-        <div className="hidden  lg:flex items-center gap-10">
-          <HeaderUi title="HOME" icon={<MdOutlineKeyboardArrowDown />}>
-            <HeaderUiList items={homeDropdownItems} />
-          </HeaderUi>
+      {/* Desktop Right Side */}
+      <div className="hidden lg:flex items-center gap-10">
+        <p className="text-xs font-semibold tracking-widest cursor-pointer hover:text-orange-400" onClick={()=>{navigate('/whoolesale')}}>
+          WHOLESALE
+        </p>
 
-          <HeaderUi title="ABOUT" icon={<MdOutlineKeyboardArrowDown />}>
-            <HeaderUiList items={AboutDropDownItems} />
-          </HeaderUi>
+        <HeaderUi title="SHOP" icon={<MdOutlineKeyboardArrowDown />}>
+          <HeaderUiList items={shopDropDownItems} />
+        </HeaderUi>
 
-          <HeaderUi title="ARTICLES" icon={<MdOutlineKeyboardArrowDown />}>
-            <HeaderUiList items={ArticleDropDownItems} />
-          </HeaderUi>
+        <p className="text-xs font-semibold tracking-widest cursor-pointer hover:text-orange-400"  onClick={()=>{navigate('/location')}}>
+          LOCATIONS
+        </p>
+      </div>
+
+      {/* Mobile Right Side */}
+      {!isMobileMenuOpen && (
+        <div className="lg:hidden cursor-pointer">
+          <MdSearch size={30} className="text-gray-800" />
         </div>
-
-        {/* Desktop Center */}
-        <div className="">
-          <img
-            src="https://www.amayatheme.redsun.design/roastery/wp-content/uploads/sites/2/2021/01/Amaya-logo.png"
-            className="lg:h-14 h-11 md:12 object-contain cursor-pointer"
-            alt="Logo"
-          />
-        </div>
-
-        {/* Desktop Right Side */}
-        <div className="hidden lg:flex items-center gap-10">
-          <p className="text-xs font-semibold tracking-widest cursor-pointer hover:text-orange-400">
-            WHOLESALE
-          </p>
-
-          <HeaderUi title="SHOP" icon={<MdOutlineKeyboardArrowDown />}>
-            <HeaderUiList items={shopDropDownItems} />
-          </HeaderUi>
-
-          <p className="text-xs font-semibold tracking-widest cursor-pointer hover:text-orange-400">
-            LOCATIONS
-          </p>
-        </div>
-
-        {/* Mobile Right Side */}
-        {!isMobileMenuOpen && (
-          <div className="lg:hidden cursor-pointer">
-            <MdSearch size={30} className="text-gray-800" />
-          </div>
-        )}
-      </header>
-    </div>
+      )}
+    </header>
+    // </div>
   );
 };
 
