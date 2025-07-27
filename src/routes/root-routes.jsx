@@ -1,13 +1,17 @@
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import RootLayout from "../latout/root-layout";
-import HomeScreen from "../pages/home";
-import Contact from "../pages/contact";
-import Shop from "../pages/shop";
+import RootLayout from "../latout/root-layout"; 
+import HomeScreen from "../pages/home"; 
+import Contact from "../pages/contact"; 
+import Shop from "../pages/shop"; 
 import WhooleSale from "../pages/whoolesale";
-import Location from "../pages/location";
-import About from "../pages/about";
-import SignUpPage from "../pages/sign-up";
-import SignInPage from "../pages/login";
+import Location from "../pages/location"; 
+import About from "../pages/about"; 
+import SignUpPage from "../pages/sign-up"; 
+import SignInPage from "../pages/login"; 
+import DashboardPage from "../pages/dashboard"; 
+import BaristaTraning from "../pages/barista-traning"; 
+import SingleProductDetails from "../pages/single_product"; 
+import CartPage from "../pages/cart.jsx"; 
 
 const router = createBrowserRouter([
   {
@@ -20,70 +24,56 @@ const router = createBrowserRouter([
             index: true,
             Component: HomeScreen,
           },
-
-          // {
-          //   path: "about",
-          //   children: [
-          //     {
-          //       index: true,
-          //       element: <div>about index</div>,
-          //     },
-          //     {
-          //       path: "abc",
-          //       element: <div>abc</div>,
-          //     },
-          //   ],
-          //   element: (
-          //     <div>
-          //       about
-          //       <Outlet />
-          //     </div>
-          //   ),
-          // },
-
           {
-            path:"about",
-            Component:About,
+            path: "about",
+            Component: About,
           },
-
           {
             path: "contact",
             Component: Contact,
           },
-
           {
-            path: "shop",
+            path: "shop", 
             Component: Shop,
           },
-
           {
             path: "whoolesale",
             Component: WhooleSale,
           },
-
           {
             path: "location",
             Component: Location,
           },
-
           {
-            path:"shop",
-            Component: Shop,
+            path:"barista-traning",
+            Component:BaristaTraning,
+          },
+          {
+            path:"products/:productId", 
+            Component:SingleProductDetails,
+          },
+          {
+            path:"cart", 
+            Component:CartPage,
           }
         ],
       },
     ],
   },
-
+ 
   {
     path:"/login",
     Component:SignInPage,
   },
-
   {
-    path: "/sign-up",
+    path: "/sign-up", 
     Component:SignUpPage,
   },
+  {
+    path:"/dashboard",
+    Component:DashboardPage,
+  },
+  
 ]);
 
 const RootRouter = () => {

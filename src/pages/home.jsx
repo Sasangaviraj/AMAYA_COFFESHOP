@@ -192,6 +192,9 @@ const HomeScreen = () => {
           topic="learn"
           maintopic="Barista Training"
           name="SING UP"
+           onClick={() => {
+            navigate("/barista-traning");
+          }}
         />
       </section>
 
@@ -242,7 +245,7 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 // image detail components
-const ImageDetail = ({ imgurl, topic, maintopic, name }) => {
+const ImageDetail = ({ imgurl, topic, maintopic, name, onClick }) => {
   return (
     <div className="relative w-[330px] md:w-[380px] lg:w-[440px] h-[650px] overflow-hidden ">
       <motion.img
@@ -264,7 +267,7 @@ const ImageDetail = ({ imgurl, topic, maintopic, name }) => {
           {maintopic}
         </h1>
 
-        <WhiteButton title={name} />
+        <WhiteButton title={name}  onClick={onClick}/>
       </div>
     </div>
   );

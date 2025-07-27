@@ -65,7 +65,7 @@ const SignInPage = () => {
       setSuccessMessage('Successfully signed in with Google! Redirecting to dashboard...');
       
       setTimeout(() => {
-        navigate('/dashboard'); 
+        navigate('/'); 
       }, 2000); 
     } catch (err) {
       console.error("Google Sign In Error:", err.code, err.message);
