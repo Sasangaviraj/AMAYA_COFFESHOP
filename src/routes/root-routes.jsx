@@ -74,7 +74,11 @@ const router = createBrowserRouter([
     Component:DashboardPage,
   },
   
-]);
+],
+  {
+    basename: "/AMAYA_COFFESHOP/",
+  }
+);
 
 const RootRouter = () => {
   return <RouterProvider router={router} />;

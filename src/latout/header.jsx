@@ -24,7 +24,16 @@ const Header = () => {
   const location = useLocation();
   console.log(location.pathname);
 
-  // NEW: Dropdown items වලට name සහ path යන දෙකම එකතු කරන්න
+  const allNavItems = [
+    { name: "HOME", path: "/", dropdown: [ /* ... */ ] },
+    { name: "PAGES", path: "/about", dropdown: [ /* ... */ ] },
+    { name: "ARTICLES", path: "/articles", dropdown: [ /* ... */ ] },
+    { name: "WHOLESALE", path: "/whoolesale" },
+    { name: "SHOP", path: "/shop", dropdown: [ /* ... */ ] },
+    { name: "LOCATIONS", path: "/location" },
+  ];
+
+  // Dropdown items 
   const homeDropdownItems = [
     { name: "HOME 1", path: "/" }, 
     { name: "HOME 2", path: "/home2" }, 
@@ -133,7 +142,7 @@ const Header = () => {
           WHOLESALE
         </p>
 
-        {/* SHOP dropdown - now includes category links */}
+        {/* SHOP dropdown  */}
         <HeaderUi title="SHOP" icon={<MdOutlineKeyboardArrowDown />} onClick={() => navigate('/shop')}> {/* Shop title click to /shop */}
           <HeaderUiList items={shopDropDownItems} />
         </HeaderUi>
